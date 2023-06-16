@@ -51,7 +51,7 @@ jobs:
           path: build
           
       - name: List files in deployment directory
-        run: ls deployment-directory
+        run: ls build/libs/
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -60,4 +60,4 @@ jobs:
           app-name: 'SpringBoot-PG-Azure'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D0E4A5891D3E49EFB68866CF93F44E67 }}
-          package: deployment-directory/*.jar
+          package: build/libs/*.jar
