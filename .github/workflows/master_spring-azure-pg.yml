@@ -28,7 +28,7 @@ jobs:
           rm gradle-7.6.1-bin.zip
 
       - name: Build with Gradle
-        run: ./gradle-7.6.1/bin/gradle clean build --debug
+        run: ./gradle-7.6.1/bin/gradle clean build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
