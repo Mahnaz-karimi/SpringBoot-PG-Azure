@@ -57,4 +57,4 @@ jobs:
           app-name: 'SpringBoot-PG-Azure'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D0E4A5891D3E49EFB68866CF93F44E67 }}
-          package: ${{ needs.build.outputs.artifact-path }}/*.jar
+          package: deployment-directory/*.jar
