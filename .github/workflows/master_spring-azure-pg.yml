@@ -22,10 +22,13 @@ jobs:
           java-version: '17'
       
       - name: Download Gradle Wrapper
-        run: curl -s "https://services.gradle.org/distributions/gradle-7.6.1-bin.zip" --output gradle.zip && unzip -q gradle.zip && rm gradle.zip
+        run: |
+          curl -LO "https://services.gradle.org/distributions/gradle-7.6.1-bin.zip"
+          unzip -q gradle-7.6.1-bin.zip
+          rm gradle-7.6.1-bin.zip
 
       - name: Build with Gradle
-        run: ./gradle-7.2/bin/gradle clean build
+        run: ./gradle-7.6.1/bin/gradle clean build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
