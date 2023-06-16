@@ -22,7 +22,7 @@ jobs:
           java-version: '17'
       
       - name: Download Gradle Wrapper
-        run: curl -s "https://services.gradle.org/distributions/gradle-7.2-bin.zip" --output gradle.zip && unzip -q gradle.zip && rm gradle.zip
+        run: curl -s "https://services.gradle.org/distributions/gradle-7.6.1-bin.zip" --output gradle.zip && unzip -q gradle.zip && rm gradle.zip
 
       - name: Build with Gradle
         run: ./gradle-7.2/bin/gradle clean build
