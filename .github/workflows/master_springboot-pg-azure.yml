@@ -49,6 +49,9 @@ jobs:
         with:
           name: java-app
           path: build
+          
+      - name: List files in deployment directory
+        run: ls deployment-directory
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
