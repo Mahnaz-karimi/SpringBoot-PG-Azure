@@ -20,9 +20,15 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '17'
+      
+      - name: Download Gradle Wrapper
+        run: |
+          curl -LO "https://services.gradle.org/distributions/gradle-7.6.1-bin.zip"
+          unzip -q gradle-7.6.1-bin.zip
+          rm gradle-7.6.1-bin.zip
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Build with Gradle
+        run: ./gradle-7.6.1/bin/gradle clean build -x test
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -42,12 +48,13 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: java-app
+          path: '${{ github.workspace }}/target/artifacts
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'SpringBoot-PG-Azure'
+          app-name: 'Spring-Azure-pg'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D0E4A5891D3E49EFB68866CF93F44E67 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F943FB0432384AD7928029CAD13B5001 }}
           package: '*.jar'
