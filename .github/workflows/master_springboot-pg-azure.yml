@@ -52,6 +52,14 @@ jobs:
           
       - name: List files in deployment directory
         run: ls build/libs/
+      
+      - name: Set up PostgreSQL environment variables
+        run: |
+          echo "DATABASE_HOST=localhost" >> $GITHUB_ENV
+          echo "DATABASE_PORT=5432" >> $GITHUB_ENV
+          echo "DATABASE_NAME=employee" >> $GITHUB_ENV
+          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> $GITHUB_ENV
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
