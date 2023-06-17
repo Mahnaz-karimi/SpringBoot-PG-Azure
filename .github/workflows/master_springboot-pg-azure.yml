@@ -60,6 +60,8 @@ jobs:
           echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> $GITHUB_ENV
           echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> $GITHUB_ENV
           echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> $GITHUB_ENV
+          echo "SPRING_DATASOURCE_URL=jdbc:postgresql://${{ secrets.DATABASE_HOST }}:${{ secrets.DATABASE_PORT }}/${{ secrets.DATABASE_NAME }}?user=${{ secrets.DATABASE_USERNAME }}&password=${{ secrets.DATABASE_PASSWORD }}&sslmode=require" >> $GITHUB_ENV
+          echo "SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect" >> $GITHUB_ENV
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -68,4 +70,4 @@ jobs:
           app-name: 'SpringBoot-PG-Azure'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D0E4A5891D3E49EFB68866CF93F44E67 }}
-          package: build/libs/SpringGradleapi-0.0.1-SNAPSHOT.jar
+          package: build/libs/SpringGradleapi-0.0.1-SNAPSHOT-plain.jar
