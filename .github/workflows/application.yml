@@ -1,4 +1,6 @@
 spring:
+  profiles:
+      include: master_springboot-pg-azure
   datasource:
     url: jdbc:postgresql://localhost:5432/employee:5432;database=employee;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
     username: ${secrets.DATABASE_USERNAME}
