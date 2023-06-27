@@ -1,0 +1,30 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    jdbc-url: ${spring.datasource.url}
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: password
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: "my_group_id"
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+# Connect to database
+spring.jpa:
+  hibernate:
+    ddl-auto: create
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    format_sql: true
