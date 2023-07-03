@@ -1,4 +1,4 @@
-package com.springGradleapi;
+package com.springGradleapi.entity;
 
 import jakarta.persistence.*;
 
