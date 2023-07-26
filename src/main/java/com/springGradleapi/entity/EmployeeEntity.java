@@ -1,6 +1,7 @@
 package com.springGradleapi.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+
 
 @Entity
 @Table(name = "employees")
@@ -15,7 +16,7 @@ public class EmployeeEntity {
     @Column(name ="employee_department")
     private String department;
 
-    public EmployeeEntity(int id, String name, String department) {
+    public EmployeeEntity(long id, String name, String department) {
         super();
         this.id = id;
         this.name = name;
