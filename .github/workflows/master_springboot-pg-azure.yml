@@ -63,7 +63,7 @@ jobs:
           echo "SPRING_DATASOURCE_URL=jdbc:postgresql://${{ secrets.DATABASE_HOST }}:${{ secrets.DATABASE_PORT }}/${{ secrets.DATABASE_NAME }}?user=${{ secrets.DATABASE_USERNAME }}&password=${{ secrets.DATABASE_PASSWORD }}&sslmode=require" >> $GITHUB_ENV
           echo "SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect" >> $GITHUB_ENV
 
-      - name: Deploy to Azure Web App
+ #    - name: Deploy to Azure Web App
  #       id: deploy-to-webapp
  #       uses: azure/webapps-deploy@v2
  #       with:
