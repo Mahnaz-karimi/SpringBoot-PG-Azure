@@ -64,10 +64,10 @@ jobs:
           echo "SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect" >> $GITHUB_ENV
 
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'SpringBoot-PG-Azure'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D0E4A5891D3E49EFB68866CF93F44E67 }}
-          package: build/libs/SpringGradleapi-0.0.1-SNAPSHOT-plain.jar
+ #       id: deploy-to-webapp
+ #       uses: azure/webapps-deploy@v2
+ #       with:
+ #         app-name: 'SpringBoot-PG-Azure'
+ #         slot-name: 'Production'
+ #        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D0E4A5891D3E49EFB68866CF93F44E67 }}
+ #         package: build/libs/SpringGradleapi-0.0.1-SNAPSHOT-plain.jar

@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EmployeeService {
-    Page<EmployeeEntity> findAllEmployee(EmployeePage employeePage,
+    List<EmployeeEntity> findAllEmployee();
+    Page<EmployeeEntity> findAllEmployees(EmployeePage employeePage,
                                          EmployeeSearchCriteria employeeSearchCriteria);
     Optional<EmployeeEntity> findById(Long id);
     EmployeeEntity saveEmployee(EmployeeEntity employeeEntity);

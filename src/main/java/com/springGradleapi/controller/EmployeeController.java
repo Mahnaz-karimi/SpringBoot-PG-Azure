@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,14 +28,15 @@ public class EmployeeController {
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-    //@GetMapping("/employee")
-    //public List<EmployeeEntity> findAllEmployee(){
-    //return employeeService.findAllEmployee();
-    //}
+
     @GetMapping("/employee")
+    public List<EmployeeEntity> findAllEmployee(){
+    return employeeService.findAllEmployee();
+    }
+    @GetMapping("/employees")
     public ResponseEntity<Page<EmployeeEntity>> getEmployees(EmployeePage employeePage,
                                                              EmployeeSearchCriteria employeeSearchCriteria){
-        return new ResponseEntity<>(employeeService.findAllEmployee(employeePage, employeeSearchCriteria),
+        return new ResponseEntity<>(employeeService.findAllEmployees(employeePage, employeeSearchCriteria),
                 HttpStatus.OK);
     }
     @GetMapping("/{id}")

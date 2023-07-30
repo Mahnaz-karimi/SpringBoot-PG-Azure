@@ -20,8 +20,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeRepository = employeeRepository;
         this.employeeCriteriaRepository = employeeCriteriaRepository;
     }
+
     @Override
-    public Page<EmployeeEntity> findAllEmployee(EmployeePage employeePage,
+    public List<EmployeeEntity> findAllEmployee() {
+        return employeeRepository.findAll();
+    }
+
+    @Override
+    public Page<EmployeeEntity> findAllEmployees(EmployeePage employeePage,
                                                 EmployeeSearchCriteria employeeSearchCriteria) {
         return employeeCriteriaRepository.findAllWithFilters(employeePage, employeeSearchCriteria);
     }
