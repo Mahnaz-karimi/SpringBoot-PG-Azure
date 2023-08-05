@@ -73,18 +73,12 @@ jobs:
  #         package: build/libs/SpringGradleapi-0.0.1-SNAPSHOT-plain.jar
 
 
-spring:
-  profiles:
-    include: master_springboot-pg-azure
-  datasource:
-    url: jdbc:postgresql://localhost:5432/employee:5432;database=employee;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
-    username: ${secrets.DATABASE_USERNAME}
-    password: ${secrets.DATABASE_PASSWORD}
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-      dialect : org.hibernate.dialect.postgreSQLDialect
-
-server:
-  port: 9191
+env:
+  spring_profiles_active: master_springboot-pg-azure
+  spring_datasource_url: jdbc:postgresql://localhost:5432/employee:5432;database=employee;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+  spring_datasource_username: ${{ secrets.DATABASE_USERNAME }}
+  spring_datasource_password: ${{ secrets.DATABASE_PASSWORD }}
+  spring_jpa_show-sql: true
+  spring_jpa_hibernate_ddl-auto: update
+  spring_jpa_hibernate_dialect: org.hibernate.dialect.PostgreSQLDialect
+  server_port: 9191
