@@ -25,9 +25,6 @@ public class EmployeeController {
         this.employeeService = employeeService;
         this.producer = producer;
     }
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
 
     @GetMapping("/employee")
     public List<EmployeeEntity> findAllEmployee(){
