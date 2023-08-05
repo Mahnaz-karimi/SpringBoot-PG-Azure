@@ -71,3 +71,20 @@ jobs:
  #         slot-name: 'Production'
  #        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D0E4A5891D3E49EFB68866CF93F44E67 }}
  #         package: build/libs/SpringGradleapi-0.0.1-SNAPSHOT-plain.jar
+
+
+spring:
+  profiles:
+    include: master_springboot-pg-azure
+  datasource:
+    url: jdbc:postgresql://localhost:5432/employee:5432;database=employee;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: ${secrets.DATABASE_USERNAME}
+    password: ${secrets.DATABASE_PASSWORD}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect : org.hibernate.dialect.postgreSQLDialect
+
+server:
+  port: 9191
