@@ -30,7 +30,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradle-7.6.1/bin/gradle clean build -x test
       - name: Run JUnit tests
-        run: ./gradle-7.6.1/bin/gradle test --tests "controller.EmployeeControllerTest"
+        run: ./gradle-7.6.1/bin/gradle test --tests "src/test/java/com/springGradleapi/controller/"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
